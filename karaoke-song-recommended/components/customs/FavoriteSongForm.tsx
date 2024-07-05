@@ -6,9 +6,10 @@ import { Input } from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { FavoriteSongType, RecommendedSongType } from '@/types/types';
 import { ChevronDown, ChevronUp } from 'lucide-react';
+import SelectGenre from './SelectGenre/SelectGenre';
 
 const FavoriteSongForm = () => {
-  const [genre, setGenre] = useState('');
+  const [genres, setGenres] = useState<string[]>([]);
   const [artist, setArtist] = useState('');
   const [atmosphere, setAtmosphere] = useState('');
   const [song, setSong] = useState<string>('');
@@ -16,6 +17,10 @@ const FavoriteSongForm = () => {
   const [isSearching, setIsSearching] = useState(false);
   const [recommendedSongs, setRecommendedSongs] = useState<RecommendedSongType[]>([]);
   const [expandedSong, setExpandedSong] = useState(-1);
+
+  const handleSelectGenre = (selected: string[]) => {
+    setGenres(selected);
+  };
 
   const handleAddSong = () => {
     if (song.trim() !== '') {
@@ -26,7 +31,7 @@ const FavoriteSongForm = () => {
 
   const createFavoriteSongParam = (): FavoriteSongType => {
     return {
-      genre,
+      genre: genres.join(),
       artists: artist,
       atmosphere,
       songHistory: songList.join(),
@@ -64,19 +69,8 @@ const FavoriteSongForm = () => {
     <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
       <Card className='w-full max-w-md mx-auto'>
         <CardContent className='space-y-4 mt-4'>
-          <div>
-            <label htmlFor='genre' className='block text-sm font-medium text-gray-700'>
-              好きなジャンル
-            </label>
-            <Input
-              id='genre'
-              type='text'
-              value={genre}
-              onChange={(e) => setGenre(e.target.value)}
-              placeholder='例: J-POP, ロック, アニメ'
-              className='mt-1'
-            />
-          </div>
+          {/* ジャンル選択 */}
+          <SelectGenre handleSelectGenre={handleSelectGenre} />
           <div>
             <label htmlFor='artist' className='block text-sm font-medium text-gray-700'>
               好きなアーティスト

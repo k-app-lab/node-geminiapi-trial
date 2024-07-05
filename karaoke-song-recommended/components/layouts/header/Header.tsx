@@ -1,5 +1,5 @@
-import { Music, Search, User } from 'lucide-react'
-import React from 'react'
+import { Music, User } from 'lucide-react';
+import React from 'react';
 
 const Header = () => {
   return (
@@ -11,13 +11,12 @@ const Header = () => {
             <h1 className='text-2xl font-bold'>歌う曲選んじゃお</h1>
           </div>
           <div className='flex items-center space-x-2'>
-            <Search size={24} />
             <User size={24} />
           </div>
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
