@@ -39,7 +39,7 @@ const SelectGenre = ({ handleSelectGenre }: SelectGenreProps) => {
   return (
     <Card className='w-full max-w-4xl bg-white/90 backdrop-blur-sm'>
       <CardContent className='p-3'>
-        <h5 className='font-bold mb-1 text-gray-800'>好きな音楽ジャンルを選んで！</h5>
+        <h5 className='font-bold mb-1 text-gray-800'>好きな音楽ジャンル</h5>
         <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4'>
           {genreOptions.map((genre) => (
             <button

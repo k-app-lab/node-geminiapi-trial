@@ -3,10 +3,10 @@ import React, { useState } from 'react';
 import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import { Input } from '../ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { FavoriteSongType, RecommendedSongType } from '@/types/types';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 import SelectGenre from './SelectGenre/SelectGenre';
+import SelectAtmosghere from './SelectAtmosghere/SelectAtmosghere';
 
 const FavoriteSongForm = () => {
   const [genres, setGenres] = useState<string[]>([]);
@@ -20,6 +20,10 @@ const FavoriteSongForm = () => {
 
   const handleSelectGenre = (selected: string[]) => {
     setGenres(selected);
+  };
+
+  const handleSelectAtmosghere = (selected: string) => {
+    setAtmosphere(selected);
   };
 
   const handleAddSong = () => {
@@ -69,8 +73,17 @@ const FavoriteSongForm = () => {
     <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
       <Card className='w-full max-w-md mx-auto'>
         <CardContent className='space-y-4 mt-4'>
+          <Button
+            onClick={handleSearch}
+            disabled={isSearching}
+            className='w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-2 px-4 rounded'
+          >
+            おすすめ曲を検索
+          </Button>
           {/* ジャンル選択 */}
           <SelectGenre handleSelectGenre={handleSelectGenre} />
+          {/* カラオケの雰囲気選択 */}
+          <SelectAtmosghere handleSelectAtmosghere={handleSelectAtmosghere} />
           <div>
             <label htmlFor='artist' className='block text-sm font-medium text-gray-700'>
               好きなアーティスト
@@ -83,23 +96,6 @@ const FavoriteSongForm = () => {
               placeholder='例: 米津玄師, あいみょん'
               className='mt-1'
             />
-          </div>
-          <div>
-            <label htmlFor='atmosphere' className='block text-sm font-medium text-gray-700'>
-              カラオケの場の雰囲気
-            </label>
-            <Select value={atmosphere} onValueChange={setAtmosphere}>
-              <SelectTrigger className='w-full mt-1'>
-                <SelectValue placeholder='雰囲気を選択' />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value='盛り上がり系'>盛り上がり系</SelectItem>
-                <SelectItem value='リラックス系'>リラックス系</SelectItem>
-                <SelectItem value='ロマンチック'>ロマンチック</SelectItem>
-                <SelectItem value='懐かしい'>懐かしい</SelectItem>
-                <SelectItem value='パーティー'>パーティー</SelectItem>
-              </SelectContent>
-            </Select>
           </div>
           <div>
             <label htmlFor='song' className='block text-sm font-medium text-gray-700'>
@@ -127,13 +123,6 @@ const FavoriteSongForm = () => {
               ))}
             </ul>
           </div>
-          <Button
-            onClick={handleSearch}
-            disabled={isSearching}
-            className='w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-2 px-4 rounded'
-          >
-            おすすめ曲を検索
-          </Button>
         </CardContent>
       </Card>
       <Card className='w-full'>
