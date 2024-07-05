@@ -1,24 +1,27 @@
-'use client'
-import React, { useState } from 'react'
-import { Button } from '../ui/button'
-import { Card, CardContent } from '../ui/card'
-import { Input } from '../ui/input'
+'use client';
+import React, { useState } from 'react';
+import { Button } from '../ui/button';
+import { Card, CardContent } from '../ui/card';
+import { Input } from '../ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 const FavoriteSongForm = () => {
-  const [genre, setGenre] = useState('')
-  const [song, setSong] = useState<string>('')
-  const [songList, setSongList] = useState<string[]>([])
+  const [genre, setGenre] = useState('');
+  const [artist, setArtist] = useState('');
+  const [atmosphere, setAtmosphere] = useState('');
+  const [song, setSong] = useState<string>('');
+  const [songList, setSongList] = useState<string[]>([]);
 
   const handleAddSong = () => {
     if (song.trim() !== '') {
-      setSongList([...songList, song])
-      setSong('')
+      setSongList([...songList, song]);
+      setSong('');
     }
-  }
+  };
 
   const handleSearch = () => {
-    console.log('おすすめ曲を検索中...')
-  }
+    console.log('おすすめ曲を検索中...');
+  };
   return (
     <Card className='w-full max-w-md mx-auto'>
       <CardContent className='space-y-4 mt-4'>
@@ -34,6 +37,36 @@ const FavoriteSongForm = () => {
             placeholder='例: J-POP, ロック, アニメ'
             className='mt-1'
           />
+        </div>
+        <div>
+          <label htmlFor='artist' className='block text-sm font-medium text-gray-700'>
+            好きなアーティスト
+          </label>
+          <Input
+            id='artist'
+            type='text'
+            value={artist}
+            onChange={(e) => setArtist(e.target.value)}
+            placeholder='例: 米津玄師, あいみょん'
+            className='mt-1'
+          />
+        </div>
+        <div>
+          <label htmlFor='atmosphere' className='block text-sm font-medium text-gray-700'>
+            カラオケの場の雰囲気
+          </label>
+          <Select value={atmosphere} onValueChange={setAtmosphere}>
+            <SelectTrigger className='w-full mt-1'>
+              <SelectValue placeholder='雰囲気を選択' />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value='energetic'>盛り上がり系</SelectItem>
+              <SelectItem value='relaxed'>リラックス系</SelectItem>
+              <SelectItem value='romantic'>ロマンチック</SelectItem>
+              <SelectItem value='nostalgic'>懐かしい</SelectItem>
+              <SelectItem value='party'>パーティー</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
         <div>
           <label htmlFor='song' className='block text-sm font-medium text-gray-700'>
@@ -69,7 +102,7 @@ const FavoriteSongForm = () => {
         </Button>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default FavoriteSongForm
+export default FavoriteSongForm;
