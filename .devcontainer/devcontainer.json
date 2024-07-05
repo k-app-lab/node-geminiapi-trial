@@ -1,7 +1,5 @@
-// For format details, see https://aka.ms/devcontainer.json. For config options, see the
-// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
 {
-  "name": "Node.js & TypeScript",
+  "name": "node gemini api trial",
   // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
   "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
   // "remoteUser": "root"
@@ -48,7 +46,11 @@
         "xshrim.txt-syntax",
         "yzane.markdown-pdf",
         "yzhang.markdown-all-in-one",
-        "bradlc.vscode-tailwindcss"
+        "bradlc.vscode-tailwindcss",
+        "dsznajder.es7-react-js-snippets",
+        "formulahendry.auto-close-tag",
+        "formulahendry.auto-rename-tag",
+        "esbenp.prettier-vscode"
       ]
     }
   }
