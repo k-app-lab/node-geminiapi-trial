@@ -1,8 +1,8 @@
 # node-geminiapi-trial
 
-## 第1ステップ：NodejsからGenimiAPIを使用してみる
+## 第1ステップ：NodejsからGenimiAPIを使用してみる　完
 
-## 第2ステップ：カラオケで歌う曲を提案するアプリを作ってみる
+## 第2ステップ：カラオケで歌う曲を提案するアプリを作ってみる　完
 
 - Nextjs 14でやってみよう
   - 画面はClaude3.5 sonnetを使ってみる()
