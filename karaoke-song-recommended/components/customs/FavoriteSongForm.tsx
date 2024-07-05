@@ -4,6 +4,7 @@ import { Button } from '../ui/button';
 import { Card, CardContent } from '../ui/card';
 import { Input } from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { FavoriteSongType } from '@/types/types';
 
 const FavoriteSongForm = () => {
   const [genre, setGenre] = useState('');
@@ -19,8 +20,30 @@ const FavoriteSongForm = () => {
     }
   };
 
-  const handleSearch = () => {
-    console.log('おすすめ曲を検索中...');
+  const createParams = (): FavoriteSongType => {
+    return {
+      genre,
+    };
+  };
+
+  const handleSearch = async () => {
+    const param = createParams();
+    try {
+      const response = await fetch(`/api/recommended-song`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(param),
+      });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      const data = await response.json();
+      console.log(data);
+    } catch (error) {
+      console.error('Error fetching message:', error);
+    }
   };
   return (
     <Card className='w-full max-w-md mx-auto'>
