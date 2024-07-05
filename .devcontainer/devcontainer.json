@@ -9,6 +9,10 @@
   // "features": {},
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   // "forwardPorts": [],
+  "runArgs": [
+    "--env-file",
+    ".env"
+  ],
   // Use 'postCreateCommand' to run commands after the container is created.
   // "postCreateCommand": "yarn install",
   // Configure tool-specific properties.
