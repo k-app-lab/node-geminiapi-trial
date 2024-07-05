@@ -32,7 +32,7 @@ async function createRecommendedSong(favoriteSong: FavoriteSongType): Promise<Re
       "title": "string",  // 曲の名称を出力してください
       "artistName": "string",  // アーティスト名を出力してください
       "description": "string",  // 曲の説明を100字以内で出力してください
-      "referenceURL": "string"  // 参考URLは曲をGoogleで検索したときのURLとしてください
+      "referenceURL": "string"  // 参考URLは曲をGoogleで検索したとき検索結果のURLを出力してください
     }
   ]
 }

@@ -135,6 +135,7 @@ const FavoriteSongForm = () => {
           </div>
           <Button
             onClick={handleSearch}
+            disabled={isSearching}
             className='w-full bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-bold py-2 px-4 rounded'
           >
             おすすめ曲を検索
@@ -174,6 +175,11 @@ const FavoriteSongForm = () => {
                   {expandedSong === index && (
                     <div className='mt-2 text-sm text-gray-700'>
                       <p>{song.description}</p>
+                      <div>
+                        <a href={song.referenceURL} className='text-blue-400'>
+                          この曲を検索
+                        </a>
+                      </div>
                     </div>
                   )}
                 </li>
