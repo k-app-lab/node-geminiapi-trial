@@ -8,27 +8,8 @@ const Header = () => {
         <div className='flex justify-between items-center'>
           <div className='flex items-center space-x-2'>
             <Music size={32} />
-            <h1 className='text-2xl font-bold'>カラオケマスター</h1>
+            <h1 className='text-2xl font-bold'>歌う曲選んじゃお</h1>
           </div>
-          <nav>
-            <ul className='flex space-x-4'>
-              <li>
-                <a href='#' className='hover:text-gray-200'>
-                  ホーム
-                </a>
-              </li>
-              <li>
-                <a href='#' className='hover:text-gray-200'>
-                  ランキング
-                </a>
-              </li>
-              <li>
-                <a href='#' className='hover:text-gray-200'>
-                  新着曲
-                </a>
-              </li>
-            </ul>
-          </nav>
           <div className='flex items-center space-x-2'>
             <Search size={24} />
             <User size={24} />
