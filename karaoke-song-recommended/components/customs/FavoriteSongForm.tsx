@@ -5,7 +5,7 @@ import { Card, CardContent } from '../ui/card';
 import { Input } from '../ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 import { FavoriteSongType, RecommendedSongType } from '@/types/types';
-import { ChevronDown, ChevronUp, Star } from 'lucide-react';
+import { ChevronDown, ChevronUp } from 'lucide-react';
 
 const FavoriteSongForm = () => {
   const [genre, setGenre] = useState('');
@@ -24,22 +24,24 @@ const FavoriteSongForm = () => {
     }
   };
 
-  const createParams = (): FavoriteSongType => {
+  const createFavoriteSongParam = (): FavoriteSongType => {
     return {
       genre,
+      artists: artist,
+      atmosphere,
+      songHistory: songList.join(),
     };
   };
 
   const handleSearch = async () => {
     setIsSearching(true);
-    const param = createParams();
     try {
       const response = await fetch(`/api/recommended-song`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(param),
+        body: JSON.stringify(createFavoriteSongParam()),
       });
       if (!response.ok) {
         throw new Error('Network response was not ok');
@@ -97,11 +99,11 @@ const FavoriteSongForm = () => {
                 <SelectValue placeholder='雰囲気を選択' />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value='energetic'>盛り上がり系</SelectItem>
-                <SelectItem value='relaxed'>リラックス系</SelectItem>
-                <SelectItem value='romantic'>ロマンチック</SelectItem>
-                <SelectItem value='nostalgic'>懐かしい</SelectItem>
-                <SelectItem value='party'>パーティー</SelectItem>
+                <SelectItem value='盛り上がり系'>盛り上がり系</SelectItem>
+                <SelectItem value='リラックス系'>リラックス系</SelectItem>
+                <SelectItem value='ロマンチック'>ロマンチック</SelectItem>
+                <SelectItem value='懐かしい'>懐かしい</SelectItem>
+                <SelectItem value='パーティー'>パーティー</SelectItem>
               </SelectContent>
             </Select>
           </div>

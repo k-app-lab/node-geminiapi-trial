@@ -12,7 +12,8 @@ async function run() {
 - 雰囲気: みんなで盛り上がれる曲
 - 過去の選曲: 
 
-回答は以下のJSON形式でrecommendedSongsの配列要素に10個回答してください。
+回答は以下のJSON形式でrecommendedSongsの配列要素に5つ回答してください。
+また、そのままJSONに変換できるようにJSON文字列のみで回答してください。
 
 [回答形式]
 {
@@ -35,6 +36,9 @@ async function run() {
     console.log(chunkText);
     text += chunkText;
   }
+
+  const obj = JSON.parse(text);
+  console.log(obj)
 }
 
 run();

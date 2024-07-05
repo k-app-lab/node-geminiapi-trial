@@ -1,5 +1,12 @@
 export type FavoriteSongType = {
   genre: string;
+  artists: string;
+  atmosphere: string;
+  songHistory: string;
+};
+
+export type RecommendedSongList = {
+  recommendedSongs: RecommendedSongType[];
 };
 
 export type RecommendedSongType = {
